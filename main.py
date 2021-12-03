@@ -12,16 +12,17 @@ def resumo_criptografico(path):
     return digest.finalize()
 
 class Summary(Resource):
+    def get(self):
+        return jsonify({"healthcheck": "health"})
+
     def post(self):
         file = request.files['file']
         filename = secure_filename(file.filename)
         path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        #print(path)
         file.save(path)
         summary = resumo_criptografico(path)
-        #print(summary)
         os.remove(path)
-        return jsonify({"summary": summary.hex()})
+        return jsonify({"filename": filename, "summary": summary.hex()})
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'temp_files'
@@ -31,7 +32,7 @@ api = Api(app)
 def index():
     return render_template('index.html')
 
-api.add_resource(Summary, '/file')
+api.add_resource(Summary, '/api/file')
 
 if __name__ == '__main__':
     app.run(debug=True)

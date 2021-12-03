@@ -1,4 +1,4 @@
-#!/home/custodma/env/bin/python3
+#!/home/custodma/LabSEC/Etapa_1/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

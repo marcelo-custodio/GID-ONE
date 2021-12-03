@@ -1,21 +1,40 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<script>
-    
-</script>
 {% endblock %}
 
 {% block body %}
-    <div class="content">
-        <h1>Resumo Criptogr&aacute;fico</h1>
-        <p>Arquivo: {{ nome }}</p>
-        <p>SHA256: {{ resumo }}</p>
-    </div>
+<div class="content">
+    <h1>Resumo Criptogr&aacute;fico</h1>
+    <p>Arquivo: <span id="file_name"></span></p>
+    <p>SHA256: <span id="file_summary"></span></p>
+</div>
 
-    <form action="/file" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <br>
-        <input type="submit" value="Enviar">
-    </form>
+<form id="file_form">
+    <input id="file_input" type="file">
+    <br>
+    <input type="submit" value="Enviar">
+</form>
+<script src="static/axios.min.js"></script>
+<script>
+    document.getElementById("file_form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var formData = new FormData();
+        var file = document.querySelector('#file_input');
+
+        formData.append("file", file.files[0]);
+
+        axios.post('api/file', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(function(response){
+            document.querySelector('#file_name').innerText = response.data.filename;
+            document.querySelector('#file_summary').innerText = response.data.summary;
+        }).catch(function(error){
+            console.error(error);
+        });
+    })
+</script>
 {% endblock %}
