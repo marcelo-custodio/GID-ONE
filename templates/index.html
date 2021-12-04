@@ -1,35 +1,42 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<title>Resumo Criptogr&aacute;fico</title>
 {% endblock %}
 
 {% block body %}
+<!-- Saída da aplicação -->
 <div class="content">
     <h1>Resumo Criptogr&aacute;fico</h1>
     <p>Arquivo: <span id="file_name"></span></p>
     <p>SHA256: <span id="file_summary"></span></p>
 </div>
 
+<!-- Entrada da aplicação  -->
 <form id="file_form">
     <input id="file_input" type="file">
     <br>
     <input type="submit" value="Enviar">
 </form>
+
+<!-- Envio das entradas para a API e disponibilização da resposta na saída da aplicação -->
 <script src="static/axios.min.js"></script>
 <script>
     document.getElementById("file_form").addEventListener("submit", function (event) {
         event.preventDefault();
 
+        // Construção do objeto com as entradas da aplicação
         var formData = new FormData();
         var file = document.querySelector('#file_input');
-
         formData.append("file", file.files[0]);
 
+        // Envio das entradas para a API
         axios.post('api/file', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         }).then(function(response){
+            // Parse da resposta da API e disponibilização na saída da aplicação
             document.querySelector('#file_name').innerText = response.data.filename;
             document.querySelector('#file_summary').innerText = response.data.summary;
         }).catch(function(error){
