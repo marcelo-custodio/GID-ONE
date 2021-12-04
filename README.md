@@ -23,6 +23,16 @@
 
 > Falta de conhecimento sobre chamadas HTTP no desenvolvimento *frontend*, resolvido após encontrar o *client* Axios e ler sua documentação.
 
+### Como executar
+
+1. Execute python3 -m pip install -r requirements.txt
+2. Execute python3 main.py
+
+Ou
+
+1. docker build . -t "nome_da_imagem"
+2. docker run -p 5000:5000 "nome_da_imagem"
+
 ### Referências
 
 1. [cryptography](https://cryptography.io/)
