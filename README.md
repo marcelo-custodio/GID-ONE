@@ -6,15 +6,15 @@
 
 > + cryptography: disponibiliza código de alto nível e interfaces de baixo nível para algoritmos criptográficos comuns, como cifras simétricas, resumos criptográficos de mensagens e funções de derivação de chaves. [1]
 
-	>> Utilizado para gerar o resumo criptográfico SHA-256.
+>> Utilizado para gerar o resumo criptográfico SHA-256.
 
-	>	+ Flask: É um *framework* leve de aplicações web com Python. Projetado para tornar o desenvolvimento rápido e fácil, com a capacidade de escalar para aplicações mais complexas. [2]
+> + Flask: É um *framework* leve de aplicações web com Python. Projetado para tornar o desenvolvimento rápido e fácil, com a capacidade de escalar para aplicações mais complexas. [2]
 
-	>> Utilizado para disponibilizar a interface gráfica da aplicação.
+>> Utilizado para disponibilizar a interface gráfica da aplicação.
 
-	>	+ Flask-RESTful: é uma extensão para Flask que adiciona suporte para construir *API's RESTful* de maneira mais ágil. [3]
+> + Flask-RESTful: é uma extensão para Flask que adiciona suporte para construir *API's RESTful* de maneira mais ágil. [3]
 
-	>> Utilizado para disponibilizar o *endpoint* responsável por gerar o resumo criptográfico para a interface gráfica.
+>> Utilizado para disponibilizar o *endpoint* responsável por gerar o resumo criptográfico para a interface gráfica.
 
 ### Frontend:
 > + Jinja: É um mecanismo de modelos rápido e extensível, que permite substituir *placeholders* com código semelhante a Python. [4]
